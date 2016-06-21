@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static('public'));
 
+var PORT = process.env.PORT || 8080;
+
+
+
 
 
 //Database configuration
@@ -116,6 +120,9 @@ app.post('/articles/:id', function(req, res){
 
 
 
-app.listen(3000, function() {
-  console.log('App running on port 3000!');
-});
+
+// Starts the server to begin listening 
+// =============================================================
+app.listen(PORT, function(){
+	console.log('App listening on PORT ' + PORT);
+})
