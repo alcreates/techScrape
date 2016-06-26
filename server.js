@@ -123,12 +123,9 @@ Article.find({})
 				if (err){
 					console.log(err);
 				} else {
-							var removedArticles = 0;
+							
 						 for(i=0;i<doc.length;i++){
-							// console.log(doc[i]._id);
-							// console.log(doc[i].note);
-							//if there is no note, we can remove the article from the db
-							//but if there is a note, move on to the next article.
+							
 										
 										if(doc[i].note==undefined){
 												Article.find({'_id' : doc[i]._id}).remove()
@@ -136,16 +133,15 @@ Article.find({})
 														if (err){
 															console.log(err);
 														}else{
-															++removedArticles;
-															console.log(removedArticles+" Total Articles removed");
-														}//close else
-												})//close .exec
-										}//close if
-						}//close for
-				}//close else 
-		})//close .exec
+															
+														}
+												})
+										}
+						}
+				} 
+		})
 res.end();
-});//close dr
+});
 
 
 
