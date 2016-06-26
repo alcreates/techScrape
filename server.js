@@ -95,11 +95,14 @@ app.get('/articles/:id', function(req, res){
 
 app.post('/articles/:id', function(req, res){
 	var newNote = new Note(req.body);
-
+	console.log("req body " + req.body);
+	console.log("new note body " + newNote);
 	newNote.save(function(err, doc){
 		if(err){
 			console.log(err);
 		} else {
+			console.log("req id " + req.params.id);
+			console.log("note id " + doc._id);
 			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
 			.exec(function(err, doc){
 				if (err){
@@ -112,6 +115,37 @@ app.post('/articles/:id', function(req, res){
 		}
 	});
 });
+
+app.get('/delete', function(req,res){
+Article.find({})
+		.populate('note')
+		.exec(function(err, doc){
+				if (err){
+					console.log(err);
+				} else {
+							var removedArticles = 0;
+						 for(i=0;i<doc.length;i++){
+							// console.log(doc[i]._id);
+							// console.log(doc[i].note);
+							//if there is no note, we can remove the article from the db
+							//but if there is a note, move on to the next article.
+										
+										if(doc[i].note==undefined){
+												Article.find({'_id' : doc[i]._id}).remove()
+												.exec(function(err, doc){
+														if (err){
+															console.log(err);
+														}else{
+															++removedArticles;
+															console.log(removedArticles+" Total Articles removed");
+														}//close else
+												})//close .exec
+										}//close if
+						}//close for
+				}//close else 
+		})//close .exec
+res.end();
+});//close dr
 
 
 

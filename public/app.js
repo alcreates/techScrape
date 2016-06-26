@@ -1,8 +1,10 @@
 $("#start").on('click', function(){
+  $('#articles').empty();
+
 $.getJSON('/articles', function(data) {
   console.log(data);
   for (var i = 0; i<data.length; i++){
-    $('#articles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+  '<a href="'+ data[i].link +'">'+ data[i].link +'</a>' + '</p>');
+    $('#articles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+  '<a href="'+ data[i].link +'" target ="_blank">'+ data[i].link +'</a>' + '</p>');
     $('#articles').append();
   }
 });
@@ -12,12 +14,34 @@ $.getJSON('/articles', function(data) {
 });
 
 
+$("#delete").on('click', function(){
+  
+  $.get('/delete', function(data){
+
+  })
+  .done(function(data){
+    
+  })
+
+});
+
+$("#newScrape").on('click', function(){
+  
+  $.get('/scrape', function(data){
+
+  })
+  .done(function(data){
+    console.log(data);
+  })
+
+});
+
 
 
 $(document).on('click', 'p', function(){
   $('#notes').empty();
   var thisId = $(this).attr('data-id');
-
+  console.log(" p data id " + $(this).attr('data-id') );
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId,
@@ -39,6 +63,7 @@ $(document).on('click', 'p', function(){
 
 $(document).on('click', '#savenote', function(){
   var thisId = $(this).attr('data-id');
+  console.log($(this).attr('data-id'));
 
   $.ajax({
     method: "POST",
