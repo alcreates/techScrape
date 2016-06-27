@@ -7,4 +7,4 @@ HTML, CSS, and JavaScript. Backend technologies include Node.js, Express, MongoD
 
 Live Demo: https://sleepy-waters-57407.herokuapp.com/
 
-<img src="http://still-plains-10648.herokuapp.com/images/tech.png">
+<img src="http://still-plains-10648.herokuapp.com/images/tech.png" height="280" width="390">
