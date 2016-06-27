@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
   res.send(index.html);
 });
 
-
+//scrapes techcrunch and adds new entrys to database
 app.get('/scrape', function(req, res) {
   request('http://www.techcrunch.com/', function(error, response, html) {
     var $ = cheerio.load(html);
@@ -67,7 +67,7 @@ app.get('/scrape', function(req, res) {
   res.send("Scrape Complete");
 });
 
-
+//gets articles from DB
 app.get('/articles', function(req, res){
 	Article.find({}, function(err, doc){
 		if (err){
@@ -78,7 +78,7 @@ app.get('/articles', function(req, res){
 	});
 });
 
-
+//Gets Note that is associated with article
 app.get('/articles/:id', function(req, res){
 	Article.findOne({'_id': req.params.id})
 	.populate('note')
@@ -92,7 +92,7 @@ app.get('/articles/:id', function(req, res){
 	});
 });
 
-
+//Creates a new note and saves new note to specified article 
 app.post('/articles/:id', function(req, res){
 	var newNote = new Note(req.body);
 	console.log("req body " + req.body);
@@ -115,7 +115,7 @@ app.post('/articles/:id', function(req, res){
 		}
 	});
 });
-
+//deletes all articles that do not have a note 
 app.get('/delete', function(req,res){
 Article.find({})
 		.populate('note')
