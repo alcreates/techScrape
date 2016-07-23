@@ -50,6 +50,7 @@ $(document).on('click', 'p', function() {
         .done(function(data) {
             console.log("note data: " + data);
             console.log("note data id: " + data._id)
+            $('#notes').append('<span id="notesTitle">notes</span>');
             $('#notes').append('<h2>' + data.title + '</h2>');
             $('#notes').append('<input id="titleinput" name="title" >');
             $('#notes').append('<textarea id="bodyinput" name="body"></textarea>');
