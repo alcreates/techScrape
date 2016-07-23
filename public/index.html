@@ -1,57 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style>
-    body{
-      /*background-color: #DECADE*/
-      background-color: #009900
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+    button {
+        margin: 1px;
+        float: right;
+        position:relative;
+        top: -27px;
+       
     }
-    h1, h2, span {
+    
+    body {
+        /*background-color: #DECADE*/
+        
+    }
+    
+    h1,
+    h2,
+    span {
+        color: white;
+    }
+    
+    #wrapper {
+        width: 960px;
+        margin: 0 auto;
+        padding-top: 5%;
+    }
+    
+    #articles {
+        width: 100%;
+        height: 700px;
+        display: inline-block;
+        overflow: auto;
+    }
+    
+    #notes {
+        width: 100%;
+    }
+    
+    textarea,
+    input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+    }
+    
+    input {
+        height: 36px;
+        font-size: 24px;
+    }
+    
+    textarea {
+        height: 200px;
+        font-size: 18px;
+    }
+    nav {
+      height:90px;
+      margin:10px;
+
+    }
+    .navbar-header{
+      position: relative;
+      top:10px;
+    }
+    #logo{
+      color:white;
+      font-family: 'Pacifico', cursive;
+      font-size:40px;
+      position:relative;
+      top:10px;
+
+    }
+    .panel-heading{
+      background-color:#0f4a00;
+    }
+    .panel-titel{
       color:white;
     }
-    #wrapper{
-      width:960px;
-      margin: 0 auto;
-      padding-top: 5%;
-    }
-    #articles{
-      width:60%;
-      height:700px;
-      display:inline-block;
-      overflow: auto;
-    }
-    #notes{
-      width:30%;
-      float:right;
-    }
-    textarea, input{
-      display:block;
-      width:100%;
-      background-color: #FCF5C7;
-    }
-    input{
-      height:36px;
-      font-size: 24px;
-    }
-    textarea{
-      height:200px;
-      font-size: 18px;
-    }
-  </style>
-</head>
-<body>
-  <div id="wrapper">
-    <h1>techScrape</h1>
-    <h2><i>techcrunch articles and notes.</i> - - - -> <button type="button" class="btn btn-primary" id='start'>start</button><button type="button" class="btn btn-primary" id='newScrape'>newScrape</button><button type="button" class="btn btn-primary" id='delete'>delete</button></h2>
+    
+    
 
+    </style>
+</head>
+
+<body>
     
-    
-    <div id="articles"><span>articles<span></div>
-    <div id="notes"><span>notes<span></div>
-  </div>
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="app.js"></script>
+        <nav class="navbar navbar navbar-light" style= "background-color:#0a9e01">
+            <div class="container-fluid">
+                <div class="navbar-header" >
+                    <a class="navbar-brand" id="logo" href="#">
+                        techScrape
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+         
+        <div class="class=container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    
+                        <div class="panel panel-default">
+                            <div class="panel-heading " style= "background-color:#0f4a00" >
+                                <h3 class="panel-title" style="color:white" >.articles</h3>
+                                 <button type="button" class="btn btn-secondary-outline" id='start'>start</button><button type="button" class="btn btn-secondary-outline" id='newScrape'>newScrape</button><button type="button" class="btn btn-secondary" id='delete'>delete</button> 
+
+                            </div>
+                            <div class="panel-body" id="articles">
+                               
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center" id="notes">
+                        <span>notes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
