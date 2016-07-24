@@ -143,6 +143,35 @@ Article.find({})
 res.end();
 });
 
+//deletes notes
+app.post('/deletenote/:id', function(req, res){
+			Article.find({'_id': req.params.id}, 'note', function(err,doc){
+			
+				if (err){
+					console.log(err);
+				}
+				//deletes the note from the Notes Collection
+				console.log(doc[0].note);
+					Note.find({'_id' : doc[0].note}).remove().exec(function(err,doc){
+						if (err){
+							console.log(err);
+						}
+
+					});
+				
+			});
+			//deletes the note reference in the article document
+			Article.findOneAndUpdate({'_id': req.params.id}, {$unset : {'note':1}})
+			.exec(function(err, doc){
+				if (err){
+					console.log(err);
+				} else {
+					res.send(doc);
+				}
+			});
+});
+
+
 
 
 
