@@ -1,5 +1,8 @@
 //Pings our server - gets all articles in DB - populates list of articles
-$("#start").on('click', function() {
+ 
+start();
+
+ function start () {
     $('#articles').empty();
 
     $.getJSON('/articles', function(data) {
@@ -11,7 +14,7 @@ $("#start").on('click', function() {
     });
     
 
-});
+};
 
 //Deletes all articles that do not have notes
 $("#delete").on('click', function() {
